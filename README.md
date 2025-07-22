@@ -14,4 +14,4 @@
 - MySQL
 
 ## VERSION
-- node.js : v20.17.0 (64-bit)
+- node.js : v20.19.4 (64-bit)
