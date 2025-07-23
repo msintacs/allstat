@@ -1,5 +1,5 @@
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useNavigate } from "react-router-dom";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -16,9 +16,7 @@ function LoginPage() {
             <KeyboardBackspaceIcon fontSize="large" />
           </button>
         </div>
-        <h1 className="mb-10 text-center text-3xl font-bold text-gray-800">
-          LOGIN
-        </h1>
+        <h1 className="mb-10 text-center text-3xl font-bold text-gray-800">LOGIN</h1>
 
         <form className="flex flex-col gap-6">
           <input
@@ -52,9 +50,7 @@ function LoginPage() {
             로그인
           </button>
 
-          <div className="mt-6 text-center text-sm text-gray-500">
-            SNS로 간편 로그인
-          </div>
+          <div className="mt-6 text-center text-sm text-gray-500">SNS 간편 로그인</div>
 
           <div className="flex flex-col gap-3">
             <button className="rounded bg-green-500 py-2 text-white hover:bg-green-600">
