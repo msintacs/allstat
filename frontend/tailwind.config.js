@@ -1,3 +1,4 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -14,6 +15,14 @@ module.exports = {
         suitExtraBold: ["SUIT-ExtraBold"],
         suitHeavy: ["SUIT-Heavy"],
       },
+      colors: {
+        primary: "#4f46e5",
+        secondary: "#06b6d4",
+      },
+    },
+    container: {
+      center: true,
+      padding: "1rem",
     },
   },
   plugins: [],

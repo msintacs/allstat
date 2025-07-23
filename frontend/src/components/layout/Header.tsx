@@ -21,9 +21,7 @@ function Header() {
         {/* 안내 바 */}
         <div className="bg-indigo-950 px-8 py-2 text-white">
           <div className="flex items-center justify-between">
-            <h1 className="text-[15px]">
-              지금 참여하고, 모두의 생각을 한눈에 확인하세요.
-            </h1>
+            <h1 className="text-[15px]">지금 참여하고, 모두의 생각을 한눈에 확인하세요.</h1>
             <div className="flex items-center space-x-2.5 text-sm">
               <div className="btn-hover-scale-105">
                 <button
