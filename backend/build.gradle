@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'allstat'
+version = '0.0.1-SNAPSHOT'
+description = 'backend'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+    /* Spring boot starter + 내장 Tomcat, Spring MVC 등 웹 개발에 필요한 기능 모음 (REST API) */
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    /* JUnit 5, AssertJ, Mockito 등 테스트에 필요한 라이브러리 */
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    /* JUnit 5 실행 런처 */
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

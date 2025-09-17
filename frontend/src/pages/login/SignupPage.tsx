@@ -59,6 +59,7 @@ function SignupPage() {
         {/* form */}
 
         <SignupInput
+          type="text"
           placeholder="이메일"
           value={form.email}
           isValid={valid.email}
@@ -68,6 +69,7 @@ function SignupPage() {
         <div className="flex w-full flex-col items-center space-y-3">
           <div className="w-full space-y-2">
             <SignupInput
+              type="password"
               placeholder="비밀번호"
               value={form.password}
               isValid={valid.password}
@@ -76,6 +78,7 @@ function SignupPage() {
             />
 
             <SignupInput
+              type="password"
               placeholder="비밀번호확인"
               value={form.passwordConfirm}
               isValid={valid.passwordConfirm}
@@ -86,6 +89,7 @@ function SignupPage() {
         </div>
 
         <SignupInput
+          type="text"
           placeholder="닉네임"
           value={form.nickname}
           isValid={valid.nickname}

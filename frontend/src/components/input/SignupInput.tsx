@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 
 type SignupInputProps = {
+  type: string;
   placeholder: string;
   value: string;
   isValid: boolean;
@@ -11,6 +12,7 @@ type SignupInputProps = {
 };
 
 function SignupInput({
+  type,
   placeholder,
   isValid,
   value,
@@ -22,6 +24,7 @@ function SignupInput({
   return (
     <div className="w-full space-y-2">
       <input
+        type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
