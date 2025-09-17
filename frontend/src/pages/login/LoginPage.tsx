@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ function LoginPage() {
             <button
               type="button"
               className="btn-hover-scale-105 text-gray-800"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/auth/signup")}
             >
               회원가입
             </button>

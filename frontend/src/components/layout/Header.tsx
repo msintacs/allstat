@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import Sidebar from "@/components/layout/Sidebar";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import Sidebar from "@/components/layout/Sidebar";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,13 +22,15 @@ function Header() {
         {/* 안내 바 */}
         <div className="bg-indigo-950 px-8 py-2 text-white">
           <div className="flex items-center justify-between">
-            <h1 className="text-[15px]">지금 참여하고, 모두의 생각을 한눈에 확인하세요.</h1>
+            <h1 className="text-[15px]">
+              지금 참여하고, 모두의 생각을 한눈에 확인하세요.
+            </h1>
             <div className="flex items-center space-x-2.5 text-sm">
               <div className="btn-hover-scale-105">
                 <button
                   type="button"
                   className="btn-hover-scale-105"
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigate("/auth/login")}
                 >
                   Login
                 </button>
