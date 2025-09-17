@@ -1,2 +1,2 @@
-server.port: 5060
+server.port: 5053
 spring.output.ansi.enabled: always

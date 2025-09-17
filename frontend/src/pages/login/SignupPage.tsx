@@ -1,8 +1,10 @@
 import HomeFilledIcon from "@mui/icons-material/HomeFilled";
+import axios from "axios";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { signupApi } from "@/api/authApi";
 import SignupInput from "@/components/input/SignupInput";
 
 function SignupPage() {
@@ -24,6 +26,9 @@ function SignupPage() {
     nickname: false,
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   /* 회원가입 FORM 유효성 검사 */
   useEffect(() => {
     setValid({
@@ -36,11 +41,44 @@ function SignupPage() {
   }, [form]);
 
   /* 회원가입 input 상태 관리 onChange */
-  const handleChange = (key, value) => {
+  const handleChange = (key: FormKey, value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
+    setError(null);
   };
 
   const allValid = Object.values(valid).every(Boolean);
+
+  const handleSubmit = async () => {
+    if (!allValid || isLoading) {
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await signupApi({
+        email: form.email,
+        password: form.password,
+        nickname: form.nickname,
+      });
+
+      if (response.status === 201) {
+        alert("회원가입이 완료되었습니다! 로그인 페이지로 이동합니다.");
+        navigate("/auth/login");
+      }
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        setError(
+          err.response.data.message || "알 수 없는 에러가 발생했습니다."
+        );
+      } else {
+        setError("네트워크 에러가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center font-suitExtraLight text-gray-800">
@@ -98,14 +136,17 @@ function SignupPage() {
         />
 
         <div className="w-full items-center text-right">
+          {error && <p className="mb-2 text-sm text-red-500">{error}</p>}
           <button
             type="button"
+            onClick={handleSubmit}
+            disabled={!allValid || isLoading}
             className={clsx(
               "rounded-lg bg-indigo-600 px-4 py-2 text-white",
               allValid ? "bg-indigo-600" : "cursor-not-allowed bg-gray-300"
             )}
           >
-            가입하기
+            {isLoading ? "가입 중..." : "가입하기"}
           </button>
         </div>
       </div>

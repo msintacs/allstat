@@ -24,10 +24,10 @@ public class AuthService {
             throw new DuplicateEmailException();
         }
 
-        // 2. DTO를 User 객체로 변환 - (패스워드 암호화)
+        // 2. DTO를 User 엔티리로 변환 (패스워드 암호화)
         User user = signupRequestDto.toEntity(passwordEncoder);
 
-        // 3. Redis에 사용자 정보 저장
+        // 3. MySQL에 사용자 정보 저장
         userRepository.save(user);
     }
 }

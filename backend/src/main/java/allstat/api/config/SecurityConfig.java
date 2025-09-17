@@ -36,7 +36,7 @@ public class SecurityConfig {
 
                 // 5. API 경로별 접근 권한 설정
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
