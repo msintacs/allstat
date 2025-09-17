@@ -1,0 +1,31 @@
+server.port: 5060
+spring.output.ansi.enabled: always
+
+# --- JWT
+jwt:
+  secret: ${JWT_SECRET:${jwt.secret:}}
+  access-token-expire-seconds: 3600
+  refresh-token-expire-seconds: 86400
+
+# --- MySQL
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/allstat?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    username: allstat
+    password: 1234
+
+  # --- JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  # --- Redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
