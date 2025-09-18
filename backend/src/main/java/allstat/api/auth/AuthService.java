@@ -8,7 +8,6 @@ import allstat.api.exception.DuplicateEmailException;
 import allstat.api.exception.InvalidPasswordException;
 import allstat.api.exception.UserNotFoundException;
 import allstat.api.jwt.JwtTokenProvider;
-import allstat.api.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,8 +19,6 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtil jwtUtil;
-
     private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
@@ -55,8 +52,7 @@ public class AuthService {
         }
 
         // 3. JWT 생성 및 반환
-
-        return jwtUtil.createToken(user.getEmail());
+        return jwtTokenProvider.createAccessToken(user.getEmail());
     }
 
 }

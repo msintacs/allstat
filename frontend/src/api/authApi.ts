@@ -6,6 +6,15 @@ interface SignupData {
   nickname: string;
 }
 
+interface LoginData {
+  email: string;
+  password: string;
+}
+
 export const signupApi = async (data: SignupData) => {
   return await apiClient.post("/auth/signup", data);
+};
+
+export const loginApi = async (data: LoginData) => {
+  return await apiClient.post("/auth/login", data);
 };

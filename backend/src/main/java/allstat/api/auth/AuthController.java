@@ -30,7 +30,7 @@ public class AuthController {
         String jwt = authService.login(loginRequestDto);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", jwt);
+        headers.add("Authorization", "Bearer " + jwt);
 
         return new ResponseEntity<>("로그인에 성공했습니다.", headers, HttpStatus.OK);
     }

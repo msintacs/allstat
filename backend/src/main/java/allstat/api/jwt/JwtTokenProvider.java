@@ -42,6 +42,18 @@ public class JwtTokenProvider {
                 .compact();                                     // 토큰 생성
     }
 
+    public String createAccessToken(String email) {
+        Date now = new Date();
+        Date validity = new Date(now.getTime() + this.accessTokenExpireSeconds * 1000);
+
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(now)
+                .setExpiration(validity)
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
     /**
      * Refresh Token 생성 메소드
      *
